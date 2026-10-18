@@ -7,7 +7,9 @@ authors = [
     { name = "Lorin Steiner", email = "lorin.steiner@bluewin.ch" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "numpy>=2.5.4",
+]
 
 [project.scripts]
 bms-idpa = "bms_idpa:main"
