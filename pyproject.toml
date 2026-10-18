@@ -1,0 +1,17 @@
+[project]
+name = "bms-idpa"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Lorin Steiner", email = "lorin.steiner@bluewin.ch" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+bms-idpa = "bms_idpa:main"
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
