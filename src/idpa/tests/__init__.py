@@ -1,2 +1,2 @@
 def main() -> None:
-    print("Test!")
+    print("Tests!")

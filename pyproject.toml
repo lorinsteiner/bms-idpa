@@ -18,8 +18,7 @@ dependencies = [
 ]
 
 [project.scripts]
-pretest = "idpa.pretest:main"
-test = "idpa.test:main"
+idpa = "idpa.cli:app"
 
 [build-system]
 requires = ["uv_build>=0.12.19,<0.13.0"]
@@ -27,6 +26,12 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 module-name = "idpa"
+
+[tool.pyrefly]
+project-includes = [
+    "**/*.py*",
+    "**/*.ipynb",
+]
 
 [dependency-groups]
 dev = [
