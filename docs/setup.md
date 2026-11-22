@@ -9,16 +9,29 @@ This project uses **[uv](https://docs.astral.sh/uv/)** for Python version manage
 If you do not have `uv` installed yet, install it first ([official uv installation guide](https://docs.astral.sh/uv/#installation)):
 
 - **macOS / Linux:**
+
   ```sh
   curl -LsSf https://astral.sh/uv/install.sh | sh
   ```
+
 - **Windows (PowerShell):**
+
   ```powershell
   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
   ```
 
 > [!NOTE]
 > You do not need to install Python 3.14 manually—`uv` will automatically download and use the version specified in `.python-version` during setup.
+
+When you use Visual Studio Code, install following extensions for a complete development experience:
+
+| Extension                         | Identifier                     |
+| --------------------------------- | ------------------------------ |
+| Python                            | ms-python.python               |
+| Python Debugger                   | ms-python.debugpy              |
+| Pyrefly - Python Language Tooling | meta.pyrefly                   |
+| Prettier - Code formatter         | esbenp.prettier-vscode         |
+| markdownlint                      | davidanson.vscode-markdownlint |
 
 ## 2. Clone the repository
 
@@ -45,43 +58,70 @@ For an overview of what each dependency is used for, see [dependencies.md](./dep
 
 ## 4. Running the Subprograms
 
-The project defines its subprograms as script entry points in `pyproject.toml` (`[project.scripts]`):
+The project provides a single command-line interface, `idpa`, built with **[Typer](https://typer.tiangolo.com/)** and defined as a script entry point in `pyproject.toml`. Individual subprograms are exposed as Typer subcommands in `src/idpa/cli`:
 
-| Subprogram | Entry Point         | Command          |
-| ---------- | ------------------- | ---------------- |
-| `pretest`  | `idpa.pretest:main` | `uv run pretest` |
-| `test`     | `idpa.test:main`    | `uv run test`    |
+| Subcommand | Entry Point                   | Command             | Description                                     |
+| ---------- | ----------------------------- | ------------------- | ----------------------------------------------- |
+| `main`     | `idpa.experiments.main:main`  | `uv run idpa main`  | Runs the main experiment.                       |
+| `pilot`    | `idpa.experiments.pilot:main` | `uv run idpa pilot` | Runs the pilot experiment.                      |
+| `dev`      | `idpa.dev.playground:dev`     | `uv run idpa dev`   | Development playground (development mode only). |
+
+> [!NOTE]
+> The `dev` subcommand is only available in development mode (when `pytest` is installed via `uv sync`). If you installed dependencies with `uv sync --no-dev`, the `dev` subcommand is hidden.
+
+You can use Typer's built-in `--help` flag at any time to see all available subcommands or inspect a specific subcommand:
+
+```sh
+uv run idpa --help
+uv run idpa <subcommand> --help
+```
 
 ### Option A: Using `uv run` (Recommended)
 
 `uv run` automatically uses the project's `.venv` without needing to activate it manually:
 
-- **Start `pretest`:**
+- **Run the `main` experiment:**
+
   ```sh
-  uv run pretest
+  uv run idpa main
   ```
-- **Start `test`:**
+
+- **Run the `pilot` experiment:**
+
   ```sh
-  uv run test
+  uv run idpa pilot
+  ```
+
+- **Run the `dev` playground (development mode only):**
+
+  ```sh
+  uv run idpa dev
   ```
 
 ### Option B: Activating the Virtual Environment
 
-If you prefer to run the commands directly without prefixing `uv run`:
+If you prefer to run the `idpa` CLI directly without prefixing `uv run`:
 
 1. Activate `.venv`:
    - **macOS / Linux:**
+
      ```sh
      source .venv/bin/activate
      ```
+
    - **Windows (PowerShell):**
+
      ```powershell
      .venv\Scripts\Activate.ps1
      ```
-2. Run the subprograms directly:
+
+2. Run any subcommand directly:
+
    ```sh
-   pretest
-   test
+   idpa main
+   idpa pilot
+   idpa dev
+   idpa --help
    ```
 
 ## 5. Running Automated Tests (`pytest`)
