@@ -1,0 +1,8 @@
+{
+  "files.exclude": {
+    "**/__pycache__": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.inlayHints.enabled": "on",
+  "prettier.documentSelectors": ["*"]
+}

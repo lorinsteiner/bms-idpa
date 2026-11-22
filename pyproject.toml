@@ -7,11 +7,33 @@ authors = [
     { name = "Lorin Steiner", email = "lorin.steiner@bluewin.ch" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.4",
+    "pandas>=3.0.6",
+    "rich>=15.0.0",
+    "seaborn>=0.13.2",
+    "torch>=2.15.0",
+    "typer>=0.29.2",
+]
 
 [project.scripts]
-bms-idpa = "bms_idpa:main"
+idpa = "idpa.cli:app"
 
 [build-system]
 requires = ["uv_build>=0.12.19,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "idpa"
+
+[tool.pyrefly]
+project-includes = [
+    "**/*.py*",
+    "**/*.ipynb",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]
