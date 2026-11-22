@@ -1,9 +1,8 @@
-from idpa.lib.neuralnetwork.initialization import init_parameters
-from idpa.lib.neuralnetwork.activations import activation_module
+from idpa.lib.ai.neuralnetwork.initialization import init_parameters
+from idpa.lib.ai.neuralnetwork.activations import activation_module
 from torch import nn
-from torch.utils.data import DataLoader
 
-from idpa.lib.neuralnetwork.variant import Variant
+from idpa.lib.ai.neuralnetwork.variant import Variant
 
 class NeuralNetwork(nn.Module):
 

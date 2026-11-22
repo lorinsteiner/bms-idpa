@@ -1,9 +1,8 @@
-from idpa.lib.neuralnetwork.loss import Loss
-from idpa.lib.neuralnetwork.optimization import Optimization
-from idpa.lib.neuralnetwork.initialization import Initialization
-from idpa.lib.neuralnetwork.activations import Activation
+from idpa.lib.ai.neuralnetwork.loss import Loss
+from idpa.lib.ai.neuralnetwork.optimization import Optimization
+from idpa.lib.ai.neuralnetwork.initialization import Initialization
+from idpa.lib.ai.neuralnetwork.activations import Activation
 from dataclasses import dataclass
-from enum import StrEnum
 
 @dataclass(frozen=True)
 class Variant:

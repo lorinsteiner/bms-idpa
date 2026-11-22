@@ -1,6 +1,6 @@
 import math
 from torch.nn.init import _NonlinearityType
-from idpa.lib.neuralnetwork.activations import Activation
+from idpa.lib.ai.neuralnetwork.activations import Activation
 from torch import nn
 from enum import StrEnum
 
